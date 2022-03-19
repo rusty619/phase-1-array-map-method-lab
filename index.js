@@ -12,5 +12,40 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
-}
+  let c = tutorials.map((lowerCaseWord) => {
+    return lowerCaseWord.toLowerCase().split(' ').map((word) => {
+      return (word.charAt(0).toUpperCase() + word.slice(1));
+    })
+  }).join(' ')
+  
+  let count = 0;
+  let str = ''
+  let newArr = []
+  for(let i = 0; i < c.length; i++){
+    str += c[i]
+    if(c[i] === ' ') {
+      let newStr = str.slice(0,str.length-1)
+      newArr.push(newStr)
+      //newArr.push(str)
+      str = ''
+    }
+  }
+  newArr.push('What,Is,JSONP?')
+  let newerARR = []
+  for(let j = 0; j < newArr.length; j++){
+   newerARR[j] = newArr[j].replaceAll(",", " ")
+  }
+  console.log(c)
+  return newerARR;
+  
+ }
+
+
+
+console.log(titleCased())
+
+//.toLowerCase().split(' ')
+//.toUpperCase() + word.slice(1)
+
+
+
